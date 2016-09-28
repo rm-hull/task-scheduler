@@ -1,4 +1,4 @@
-(ns task-scheduler.test-fibonacci
+(ns task-scheduler.fibonacci-test
   (:require
     [clojure.test :refer :all]
     [task-scheduler.core :refer :all]))
