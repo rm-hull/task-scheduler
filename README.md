@@ -115,9 +115,9 @@ wait for the results. Compare the fork/join version:
 ; => (1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181)
 ```
 
-The `fork` forks each sub-call in a different thread, and only returns the
-result out of the `join`. The structure and flow of the two implementations
-is exactly the same.
+The `fork` creates a new task for each sub-call (which would be executed in 
+parallel), while the result is returned out of the `join`. The structure and 
+flow of the two implementations is exactly the same.
 
 Note this particular implementation is likely to perform poorly because the
 smallest subtasks are too small to be worthwhile splitting up. Instead, as is
