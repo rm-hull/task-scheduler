@@ -1,4 +1,4 @@
-(defproject rm-hull/task-scheduler "0.2.0"
+(defproject rm-hull/task-scheduler "0.2.1"
   :description "Fork/Join task scheduling in Clojure"
   :url "https://github.com/rm-hull/task-scheduler"
   :license {
