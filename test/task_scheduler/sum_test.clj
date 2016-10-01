@@ -20,4 +20,4 @@
 (deftest check-sum
   (let [arr (vec (range 10000000))]
     (is (= (reduce + arr)
-           (sum arr))))
+           (sum arr)))))
