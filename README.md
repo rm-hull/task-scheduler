@@ -31,7 +31,7 @@ There is a version hosted at [Clojars](https://clojars.org/rm-hull/task-schedule
 For leiningen include a dependency:
 
 ```clojure
-[rm-hull/task-scheduler "0.1.0"]
+[rm-hull/task-scheduler "0.2.0"]
 ```
 
 For maven-based projects, add the following to your `pom.xml`:
@@ -40,9 +40,13 @@ For maven-based projects, add the following to your `pom.xml`:
 <dependency>
   <groupId>rm-hull</groupId>
   <artifactId>task-scheduler</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
+
+#### Upgrading from 0.1.0
+
+* The `task` macro was renamed to `fork`.
 
 ## API Documentation
 
