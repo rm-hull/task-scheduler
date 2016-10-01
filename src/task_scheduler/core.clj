@@ -13,7 +13,7 @@
   pool. Note: it is not necessary to call this function directly, as `fork`
   will automatically submit onto the fork/join pool."
   [^ForkJoinTask task]
-  (if (instance? ForkJoinWorkerThread (Thread/currentThread))
+  (if (ForkJoinTask/inForkJoinPool)
     (.fork task)
     (.execute pool task))
   task)
