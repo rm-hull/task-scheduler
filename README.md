@@ -15,7 +15,7 @@ blocking `join` function.
 
 ### Pre-requisites
 
-You will need [Leiningen](https://github.com/technomancy/leiningen) 2.6.1 or above installed.
+You will need JDK8 and [Leiningen](https://github.com/technomancy/leiningen) 2.6.1 or above installed.
 
 ### Building
 

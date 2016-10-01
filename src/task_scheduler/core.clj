@@ -6,7 +6,7 @@
   (:import
     [java.util.concurrent ForkJoinPool ForkJoinWorkerThread ForkJoinTask RecursiveTask]))
 
-(def ^:private ^ForkJoinPool pool (ForkJoinPool.))
+(def ^:private ^ForkJoinPool pool (ForkJoinPool/commonPool))
 
 (defn submit
   "Checks the current thread before submitting the task to the Fork/Join
