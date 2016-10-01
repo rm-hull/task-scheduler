@@ -5,21 +5,21 @@
 
 (deftest check-single-task
   (is (= 16 (join
-              (task
+              (fork
                 (Thread/sleep 100)
                 (+ 9 7))))))
 
 (deftest check-recursive-task
   (is (= 16 (join
-              (task
-                (let [t2 (task
+              (fork
+                (let [t2 (fork
                            (Thread/sleep 200)
                            (+ 3 9))]
                   (Thread/sleep 100)
                   (+ (join t2) 4)))))))
 
 (deftest check-multiple-tasks
-  (let [make-task (fn [x] (task
+  (let [make-task (fn [x] (fork
                             (Thread/sleep (* x 10))
                             (* x x)))
         tasks (map make-task (range 50))]

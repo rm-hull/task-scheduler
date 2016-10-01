@@ -6,8 +6,8 @@
 (defn fib [n]
   (if (<= n 1)
     n
-    (let [f1 (task (fib (- n 1)))
-          f2 (task (fib (- n 2)))]
+    (let [f1 (fork (fib (- n 1)))
+          f2 (fork (fib (- n 2)))]
 
       (+ (join f1) (join f2)))))
 

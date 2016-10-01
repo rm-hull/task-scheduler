@@ -10,14 +10,15 @@
 
 (defn submit
   "Checks the current thread before submitting the task to the Fork/Join
-  pool."
+  pool. Note: it is not necessary to call this function directly, as `fork`
+  will automatically submit onto the fork/join pool."
   [^ForkJoinTask task]
   (if (instance? ForkJoinWorkerThread (Thread/currentThread))
     (.fork task)
     (.execute pool task))
   task)
 
-(defmacro task
+(defmacro fork
   "Constructs a `RecursiveTask` proxy object who's abstract compute()
   method is fulfilled by the supplied body. The task is then submitted
   for execution onto a Fork/Join pool.

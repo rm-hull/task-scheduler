@@ -8,7 +8,7 @@ pieces. The inspiration and motivation for this library was the excellent Course
 [Parallel Programming in Scala](https://www.coursera.org/learn/parprog1/home/welcome) course run by _École Polytechnique Fédérale de Lausanne_.
 
 Mostly, the implementation consists of wrapping the Java implementation, but
-crucially includes a `task` macro which accepts a body, converts this into a
+crucially includes a `fork` macro which accepts a body, converts this into a
 recursive task which is then automatically submitted to the fork/join executor,
 to be run when there is available capacity. The result is available from the
 blocking `join` function.
@@ -62,7 +62,7 @@ else
   invoke the two pieces and wait for the results
 ```
 
-Wrap this code in a `task` block, which will typically return a [RecursiveTask](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html),
+Wrap this code in a `fork` block, which will typically return a [RecursiveTask](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html),
 having submitted it to a ForkJoinPool instance.
 
 ### A dumb way to compute Fibonacci numbers
@@ -97,11 +97,13 @@ make use of the fork/join task scheduler is to wrap the sub-calls, and then
 wait for the results. Compare the fork/join version:
 
 ```clojure
+(use 'task.scheduler.core)
+
 (defn fib [n]
   (if (<= n 1)
     n
-    (let [f1 (task (fib (- n 1)))
-          f2 (task (fib (- n 2)))]
+    (let [f1 (fork (fib (- n 1)))
+          f2 (fork (fib (- n 2)))]
 
       (+ (join f1) (join f2)))))
 
@@ -109,7 +111,7 @@ wait for the results. Compare the fork/join version:
 ; => (1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181)
 ```
 
-The `task` forks each sub-call in a different thread, and only returns the
+The `fork` forks each sub-call in a different thread, and only returns the
 result out of the `join`. The structure and flow of the two implementations
 is exactly the same.
 
@@ -182,4 +184,3 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-Fork/Join task scheduling in Clojure
