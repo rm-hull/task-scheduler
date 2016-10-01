@@ -115,8 +115,8 @@ wait for the results. Compare the fork/join version:
 ; => (1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181)
 ```
 
-The `fork` creates a new task for each sub-call (which would be executed in 
-parallel), while the result is returned out of the `join`. The structure and 
+The `fork` creates a new task for each sub-call (which would be executed in
+parallel), while the result is returned out of the `join`. The structure and
 flow of the two implementations is exactly the same.
 
 Note this particular implementation is likely to perform poorly because the
@@ -137,6 +137,80 @@ along the lines of:
 (take 10 (fib 1 1))
 ; => (1 1 2 3 5 8 13 21 34 55)
 ```
+
+### Parallel Sum
+
+Another example (this time from [Dan Grossman](http://homes.cs.washington.edu/~djg/)'s _Parallelism and
+Concurrency_ course), converted from Java into Clojure, to sum up
+10-million integers:
+
+```clojure
+(def ^:dynamic *sequential-threshold* 5000)
+
+(defn sum
+  ([arr]
+   (sum arr 0 (count arr)))
+
+  ([arr lo hi]
+   (if (<= (- hi lo) *sequential-threshold*)
+     (reduce + (subvec arr lo hi))
+     (let [mid (+ lo (quot (- hi lo) 2))
+           left (fork (sum arr lo mid))
+           right (fork (sum arr mid hi))]
+       (+ (join left) (join right))))))
+
+(def arr (vec (range 100000000)))
+
+(time (reduce + arr))
+;=> "Elapsed time: 317.234628 msecs"
+;=> 49999995000000
+
+(time (sum arr))
+;=> "Elapsed time: 186.297616 msecs"
+;=> 49999995000000
+```
+
+For comparison, the parallel sum implementation is approximately twice as
+fast as `(reduce + arr)`, as measured on an Intel Core i5-5257U CPU @ 2.70GHz.
+
+Setting `*sequential-threshold*` to a good-in-practice value is a trade-off.
+The documentation for the Fork/Join framework suggests creating parallel
+subtasks until the number of basic computation steps is somewhere over 100 and
+less than 10,000. The exact number is not crucial provided you avoid extremes.
+
+#### Can we do better?
+
+Look carefully at the implementation of parallel sum: `left` and `right` are
+forked tasks, while the current thread is blocked waiting for them both to
+yield their results.
+
+The revised version below still forks the `left` value, but `right` value is
+computed in-line, thereby eliminating creation of more parallel tasks than is
+necessary; this is _slightly_ more efficient at the expense of seeming somewhat
+asymmetrical.
+
+```clojure
+(defn sum
+  ([arr]
+   (sum arr 0 (count arr)))
+
+  ([arr lo hi]
+   (if (<= (- hi lo) *sequential-threshold*)
+     (reduce + (subvec arr lo hi))
+     (let [mid (+ lo (quot (- hi lo) 2))
+           left (fork (sum arr lo mid))
+           right (sum arr mid hi)]
+       (+ (join left) right)))))
+```
+
+However, the order is crucial, if the `left` had been joined before `right`
+invoked, or `right` computed before `left` forked, then the entire
+array-summing algorithm would have no parallelism at all since each step would
+compute sequentially.
+
+This may've been important for JSR166/JDK6 & JDK7, but I beleive that this is
+no longer the case for JDK8, so for the sake of avoiding the left/right
+ordering 'gotcha', use fork in all cases.
 
 ### Implicit Equations
 
