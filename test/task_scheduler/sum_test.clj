@@ -1,7 +1,7 @@
 (ns task-scheduler.sum-test
   (:require
-    [clojure.test :refer :all]
-    [task-scheduler.core :refer :all]))
+   [clojure.test :refer :all]
+   [task-scheduler.core :refer :all]))
 
 (def ^:dynamic *sequential-threshold* 5000)
 
@@ -15,7 +15,7 @@
      (let [mid (+ lo (quot (- hi lo) 2))
            left (fork (sum arr lo mid))
            right (sum arr mid hi)]
-       (+ (join left) right )))))
+       (+ (join left) right)))))
 
 (deftest check-sum
   (let [arr (vec (range 10000000))]

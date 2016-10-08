@@ -1,7 +1,7 @@
 (ns task-scheduler.fibonacci-test
   (:require
-    [clojure.test :refer :all]
-    [task-scheduler.core :refer :all]))
+   [clojure.test :refer :all]
+   [task-scheduler.core :refer :all]))
 
 (defn fib [n]
   (if (<= n 1)

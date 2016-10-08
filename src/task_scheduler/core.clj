@@ -4,7 +4,7 @@
   Huge numbers of tasks and subtasks may be hosted by a small number of
   actual threads in a ForkJoinPool, at the price of some usage limitations."
   (:import
-    [java.util.concurrent ForkJoinPool ForkJoinWorkerThread ForkJoinTask RecursiveTask]))
+   [java.util.concurrent ForkJoinPool ForkJoinWorkerThread ForkJoinTask RecursiveTask]))
 
 (def ^:private ^ForkJoinPool pool (ForkJoinPool/commonPool))
 
