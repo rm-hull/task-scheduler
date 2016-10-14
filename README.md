@@ -208,7 +208,7 @@ invoked, or `right` computed before `left` forked, then the entire
 array-summing algorithm would have no parallelism at all since each step would
 compute sequentially.
 
-This may've been important for JSR166/JDK6 & JDK7, but I beleive that this is
+This may've been important for JSR166/JDK6 & JDK7, but I believe that this is
 no longer the case for JDK8, so for the sake of avoiding the left/right
 ordering 'gotcha', use fork in all cases.
 
