@@ -1,5 +1,10 @@
 # Task Scheduler
-[![Build Status](https://travis-ci.org/rm-hull/task-scheduler.svg?branch=master)](http://travis-ci.org/rm-hull/task-scheduler) [![Coverage Status](https://coveralls.io/repos/rm-hull/task-scheduler/badge.svg?branch=master)](https://coveralls.io/r/rm-hull/task-scheduler?branch=master) [![Dependencies Status](https://jarkeeper.com/rm-hull/task-scheduler/status.svg)](https://jarkeeper.com/rm-hull/task-scheduler) [![Downloads](https://jarkeeper.com/rm-hull/task-scheduler/downloads.svg)](https://jarkeeper.com/rm-hull/task-scheduler) [![Clojars Project](https://img.shields.io/clojars/v/rm-hull/task-scheduler.svg)](https://clojars.org/rm-hull/task-scheduler)
+[![Build Status](https://travis-ci.org/rm-hull/task-scheduler.svg?branch=master)](http://travis-ci.org/rm-hull/task-scheduler) 
+[![Coverage Status](https://coveralls.io/repos/rm-hull/task-scheduler/badge.svg?branch=master)](https://coveralls.io/r/rm-hull/task-scheduler?branch=master) 
+[![Dependencies Status](https://jarkeeper.com/rm-hull/task-scheduler/status.svg)](https://jarkeeper.com/rm-hull/task-scheduler) 
+[![Downloads](https://jarkeeper.com/rm-hull/task-scheduler/downloads.svg)](https://jarkeeper.com/rm-hull/task-scheduler) 
+[![Clojars Project](https://img.shields.io/clojars/v/rm-hull/task-scheduler.svg)](https://clojars.org/rm-hull/task-scheduler)
+[![Maintenance](https://img.shields.io/maintenance/yes/2016.svg?maxAge=2592000)]()
 
 Task scheduler is a library designed to abstract over Java's [Fork/Join](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html)
 framework, in order to help make using lightweight fork/join tasks more idiomatic in Clojure.
