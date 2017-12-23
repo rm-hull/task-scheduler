@@ -13,14 +13,14 @@
     :source-paths ["src"]
     :output-path "doc/api"
     :source-uri "http://github.com/rm-hull/task-scheduler/blob/master/{filepath}#L{line}"}
-  :min-lein-version "2.6.1"
+  :min-lein-version "2.8.1"
   :profiles {
     :dev {
       :global-vars {*warn-on-reflection* true}
       :plugins [
         [lein-codox "0.10.3"]
-        [lein-cljfmt "0.5.6"]
-        [lein-cloverage "1.0.9"]]
+        [lein-cljfmt "0.5.7"]
+        [lein-cloverage "1.0.10"]]
       :dependencies [
-        [org.clojure/clojure "1.8.0"]]}})
+        [org.clojure/clojure "1.9.0"]]}})
 
