@@ -106,7 +106,7 @@ make use of the fork/join task scheduler is to wrap the sub-calls, and then
 wait for the results. Compare the fork/join version:
 
 ```clojure
-(use 'task.scheduler.core)
+(use 'task-scheduler.core)
 
 (defn fib [n]
   (if (<= n 1)
