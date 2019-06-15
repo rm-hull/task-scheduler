@@ -4,7 +4,7 @@
 [![Dependencies Status](https://versions.deps.co/rm-hull/task-scheduler/status.svg)](https://versions.deps.co/rm-hull/task-scheduler)
 [![Downloads](https://versions.deps.co/rm-hull/task-scheduler/downloads.svg)](https://versions.deps.co/rm-hull/task-scheduler)
 [![Clojars Project](https://img.shields.io/clojars/v/rm-hull/task-scheduler.svg)](https://clojars.org/rm-hull/task-scheduler)
-[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg?maxAge=2592000)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?maxAge=2592000)]()
 
 Task scheduler is a library designed to abstract over Java's [Fork/Join](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html)
 framework, in order to help make using lightweight fork/join tasks more idiomatic in Clojure.
