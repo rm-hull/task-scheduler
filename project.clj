@@ -12,6 +12,11 @@
   :codox {
     :source-paths ["src"]
     :output-path "doc/api"
+    :doc-files [
+      "doc/basic-usage.md"
+      "doc/references.md"
+      "LICENSE.md"
+    ]
     :source-uri "http://github.com/rm-hull/task-scheduler/blob/main/{filepath}#L{line}"}
   :min-lein-version "2.8.1"
   :profiles {
