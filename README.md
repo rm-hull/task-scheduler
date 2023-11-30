@@ -232,7 +232,7 @@ mechanism to split the work effort into disparate chunks. For example, the
 and attempts to plot Cartesian coordinates where the value crosses zero, which
 results in some spectacular charts:
 
-![PNG](https://rawgithub.com/rm-hull/implicit-equations/master/doc/dizzy.png)
+![PNG](https://rawgithub.com/rm-hull/implicit-equations/main/doc/dizzy.png)
 
 There is no dependency, or need for communication (or synchronization needed) to
 calculate the value for each point, and there is very little effort
