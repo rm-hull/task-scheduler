@@ -12,15 +12,15 @@
   :codox {
     :source-paths ["src"]
     :output-path "doc/api"
-    :source-uri "http://github.com/rm-hull/task-scheduler/blob/master/{filepath}#L{line}"}
+    :source-uri "http://github.com/rm-hull/task-scheduler/blob/main/{filepath}#L{line}"}
   :min-lein-version "2.8.1"
   :profiles {
     :dev {
       :global-vars {*warn-on-reflection* true}
       :plugins [
-        [lein-codox "0.10.3"]
-        [lein-cljfmt "0.5.7"]
-        [lein-cloverage "1.0.10"]]
+        [lein-codox "0.10.8"]
+        [lein-cljfmt "0.9.2"]
+        [lein-cloverage "1.2.4"]]
       :dependencies [
-        [org.clojure/clojure "1.9.0"]]}})
+        [org.clojure/clojure "1.11.1"]]}})
 

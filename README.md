@@ -1,10 +1,11 @@
 # Task Scheduler
-[![Build Status](https://travis-ci.org/rm-hull/task-scheduler.svg?branch=master)](http://travis-ci.org/rm-hull/task-scheduler)
-[![Coverage Status](https://coveralls.io/repos/rm-hull/task-scheduler/badge.svg?branch=master)](https://coveralls.io/r/rm-hull/task-scheduler?branch=master)
+
+[![Build Status](https://github.com/rm-hull/task-scheduler/actions/workflows/clojure.yml/badge.svg)](https://github.com/rm-hull/task-scheduler/actions/workflows/clojure.yml)
+[![Coverage Status](https://coveralls.io/repos/rm-hull/task-scheduler/badge.svg?branch=main)](https://coveralls.io/r/rm-hull/task-scheduler?branch=main)
 [![Dependencies Status](https://versions.deps.co/rm-hull/task-scheduler/status.svg)](https://versions.deps.co/rm-hull/task-scheduler)
 [![Downloads](https://versions.deps.co/rm-hull/task-scheduler/downloads.svg)](https://versions.deps.co/rm-hull/task-scheduler)
 [![Clojars Project](https://img.shields.io/clojars/v/rm-hull/task-scheduler.svg)](https://clojars.org/rm-hull/task-scheduler)
-[![Maintenance](https://img.shields.io/maintenance/yes/2019.svg?maxAge=2592000)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2023.svg?maxAge=2592000)]()
 
 Task scheduler is a library designed to abstract over Java's [Fork/Join](https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html)
 framework, in order to help make using lightweight fork/join tasks more idiomatic in Clojure.
@@ -51,7 +52,7 @@ For maven-based projects, add the following to your `pom.xml`:
 
 #### Upgrading from 0.1.0
 
-* The `task` macro was renamed to `fork`.
+- The `task` macro was renamed to `fork`.
 
 ## API Documentation
 
@@ -231,19 +232,19 @@ mechanism to split the work effort into disparate chunks. For example, the
 and attempts to plot Cartesian coordinates where the value crosses zero, which
 results in some spectacular charts:
 
-![PNG](https://rawgithub.com/rm-hull/implicit-equations/master/doc/dizzy.png)
+![PNG](https://rawgithub.com/rm-hull/implicit-equations/main/doc/dizzy.png)
 
 There is no dependency, or need for communication (or synchronization needed) to
 calculate the value for each point, and there is very little effort
 required to separate the problem into a number of parallel tasks. The tasks
-are split by bands, as illustrated [in the code](https://github.com/rm-hull/implicit-equations/blob/master/src/implicit_equations/plot.clj#L103-L104) and are joined before the function returns.
+are split by bands, as illustrated [in the code](https://github.com/rm-hull/implicit-equations/blob/main/src/implicit_equations/plot.clj#L103-L104) and are joined before the function returns.
 
 ## References
 
-* https://www.coursera.org/learn/parprog1/home/welcome
-* https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html
-* https://github.com/rm-hull/implicit-equations
-* http://homes.cs.washington.edu/~djg/teachingMaterials/grossmanSPAC_forkJoinFramework.html#useful
+- https://www.coursera.org/learn/parprog1/home/welcome
+- https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html
+- https://github.com/rm-hull/implicit-equations
+- http://homes.cs.washington.edu/~djg/teachingMaterials/grossmanSPAC_forkJoinFramework.html#useful
 
 ## License
 
